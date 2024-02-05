@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JavaScript - Introduction : Exercices partie 2</title>
+    </head>
+    <body style="padding: 20px;">
+        <script>
+            // Vous rédigerez le code nécessaire à la résolution de chaque exercice (bien lire les consignes).
+            // Les mots entre chevrons (ex : <name>) correspondront à la valeur des variables associées.
+            // Pour plus de lisibilité, vous commenterez le code des exercices précédents en passant à un nouvel exercice.
+            // Le projet sera à rendre via un nouveau dépôt disponible sur votre profil GitHub.
+
+            // == Exercice 6 ==
+            // Déclarez trois variables : "name", "age" et "city" dont les valeurs seront définies par l'Utilisateur.
+            // Vous afficherez, après avoir validé les données entrées par l'Utilisateur :
+            // - "Je m'appelle <name>, j'ai <age> ans (mineur.e) et j'habite à <city>." si la valeur de "age" est inférieure à 18 
+            // - "Je m'appelle <name>, j'ai <age> ans (majeur.e) et j'habite à <city>." si la valeur de "age" est supérieure ou égale à 18 
+
+                function checkAge(){
+                    let name = prompt('Entrez votre prénom');
+                    let age = prompt('Entrez votre age');
+                    let city = prompt('entrez votre ville');
+                    if(age < 18){
+                        alert('Je m\'appelle ' + name + ', j\'ai ' + age + ' ans (mineur) et j\'habite à ' + city);
+                    } else {
+                        alert('Je m\'appelle ' + name + ', j\'ai ' + age + ' ans (majeur) et j\'habite à ' + city);
+                    }
+                }                    
+                       
+                // checkAge();
+
+
+            // == Exercice 7 ==
+            // Déclarez deux variables : "nb1" et "nb2" dont les valeurs seront définies par l'Utilisateur.
+            // Vous afficherez, après avoir validé les données entrées par l'Utilisateur :
+            // - "<nb1> est plus grand que <nb2>" si la valeur de "nb1" est supérieure à la valeur de "nb2"
+            // - "<nb1> est plus petit que <nb2>" si la valeur de "nb1" est inférieure à la valeur de "nb2"
+            // - "<nb1> est plus égal à <nb2>" si la valeur de "nb1" est égale à la valeur de "nb2"
+            // - un message d'erreur si les données ne sont pas valides
+
+                function compare(){
+                    let nb1 = prompt('Entrez un premier nombre')/1;              
+                    let nb2 = prompt('Entrez un deuxieme nombre')/1;
+                    if(nb1 < nb2){
+                        alert(nb1 + ' est plus petit que ' + nb2);
+                    } else if(nb1 > nb2) {
+                        alert(nb1 + ' est plus grand que ' + nb2);
+                    } else if(nb1 === nb2) {
+                        alert(nb1 + ' est égal à ' + nb2);
+                    } else {
+                        alert('Données non valides')
+                    }
+                }
+
+                // compare();
+
+            // == Exercice 8 ==
+            // En utilisant des boucles, vous afficherez dans la console une demi-pyramide de 5 lignes de haut créée à partir du caractère "*".
+            // (Voir l'image demi-pyramide.jpg se trouvant dans le dossier "/img" pour plus d'informations.)
+            // 
+            // BONUS : En utilisant des boucles, vous afficherez une pyramide complète dont la hauteur est définie par l'Utilisateur.
+
+            function pyramidV1(){
+                let height = prompt('Entrez une hauteur');
+                const element = "*";
+                const space = " ";
+                let spaceCounter = height;
+                for (i = 1 ; i <= (height * 2); i++){
+                    if(i % 2 !== 0){                        
+                        console.log(space.repeat(spaceCounter) + element.repeat(i));
+                        spaceCounter--;
+                    }
+                }
+            }
+
+            // pyramid();
+
+            function pyramidV2(){
+                let height = prompt('Entrez une hauteur')*1;
+                let element = "**";
+                let spaceCounter = height;
+                let spaceItems = "";
+                for (i = 1 ; i <= height; i++){       
+                        spaceItems ="";
+                        for(a = spaceCounter; a > 0; a-- ){
+                            spaceItems += " ";
+                        }
+                        console.log(spaceItems + element);
+                        element += "**";
+                        spaceCounter--;;                    
+                
+                }
+            }
+
+            pyramidV2();
+
+            // == Exercice 9 ==
+            // Déclarez deux variables : "nb1" et "nb2" dont les valeurs seront définies par l'Utilisateur.
+            // En utilisant des fonctions, vous permettrez à l'Utilisateur d'effectuer un calcul de base de son choix (somme, différence, produit, division).
+
+            function calculate(){
+                function sum(a, b){
+                    return(a + b);
+                };
+                function sustraction(a, b){
+                    return(a - b);
+                };
+                function multiplication(a, b){
+                    return(a * b);
+                };
+                function division(a, b){
+                    return(a / b);
+                };
+                let nb1 = prompt('Entrez un premier nombre')*1;
+                let nb2 = prompt('Entrez un deuxième nombre')*1;
+                
+                function choice(){
+                    let op = prompt('Quelle opération voulez-vous effectuer ? Addition(A) - Soustraction(S) - Multiplication (M) - Division(D)');
+                    switch(op){
+                        case 'A' : 
+                            alert(sum(nb1, nb2));
+                            break;
+
+                        case 'a' : 
+                            alert(sum(nb1, nb2));
+                            break;
+
+                        case 'S' :
+                            alert(sustraction(nb1, nb2));
+                            break;
+
+                        case 's' :
+                            alert(sustraction(nb1, nb2));
+                            break;
+                        
+                        case 'm' :
+                            alert(multiplication(nb1, nb2));
+                            break;
+
+                        case 'M' :
+                            alert(multiplication(nb1, nb2));
+                            break;
+
+                        case 'D' :
+                            alert(division(nb1, nb2));
+                            break;
+
+                        case 'd' :
+                            alert(division(nb1, nb2));
+                            break;
+
+                        default : 
+                            alert('Choix non valide, veuillez choisir à nouveau');
+                            choice();
+                    }
+                }
+                choice();
+            }   
+
+            // calculate();
+
+            // == Exercice 10 ==
+            // En utilisant des fonctions, vous développerez une version du jeu du Juste Prix selon les règles suivantes :
+            // - L'Utilisateur doit deviner un nombre secret ;
+            // - le nombre secret est choisi aléatoirement entre 1 et 1000 ;
+            // - l'Utilisateur est invité à deviner le nombre en 10 tentatives ;
+            // - après chaque tentative de l'Utilisateur, un indice est donné sous la forme "c'est +" ou "c'est -" ;
+            // - une fois les 10 tentatives passées, l'Utilisateur est notifié et le nombre secret lui est révélé.
+            //
+            // BONUS   : Vous permettrez à l'Utilisateur de choisir sa difficulté entre facile, normal et difficile
+            //           changeant ainsi le nombre de tentatives à, respectivement, 20, 10 et 7.
+            //
+            // BONUS 2 : Vous intégrerez un deuxième mode de jeu dans lequel les tentatives sont illimitées mais le temps imparti est limité.
+            //           Les difficultés facile, normal et difficile définiront le temps qui est imparti à, respectivement, 30 secondes, 1 minutes //           et 2 minutes.
+
+            function justPriceV1(){
+                let difficult;
+                let count = 11;
+                let nbRandom = Math.floor(Math.random() * 1000);
+                let result;
+                ;
+                for(i = 0; i <= 10; i++){
+                    result = prompt('Entrez un chiffre')/1;
+                    if(result < nbRandom){
+                        count--;
+                        alert('C\'est plus, il vous reste ' + count + ' essais');
+                        
+                    } else if(result > nbRandom){
+                        count--;
+                        alert('C\'est moins, il vous reste ' + count + ' essais');
+                    } else if(result = nbRandom){
+                        alert('Bravo, vous avez gagné');
+                        break;
+                    }
+                }
+                if(count === 0){
+                    alert('Vous avez perdu, le nombre à deviner étais ' + nbRandom);
+                }
+            }
+                // justPriceV1()
+
+                function justPriceV2(){
+                    function difficultChoice(){
+                        let count;
+                    difficult = prompt('Selectionnez votre niveau de difficulté - Facile = 1 - Normal = 2 - Difficile = 3');
+                    switch(difficult){
+                        case '1' :
+                            count = 20;
+                            return count;
+                            break;
+
+                        case '2' :
+                            count = 10;
+                            return count;
+                            break;
+
+                        case '3' :
+                            count = 7;
+                            return count;
+                            break;
+
+                        default : 
+                        alert('Entrer une valeur valide !');
+                        difficultChoice();
+                    }
+                }
+                
+                let nbRandom = Math.floor(Math.random() * 1000);
+                let result;
+                let counter = difficultChoice();
+                let ref = counter-1;
+                for(i = 0; i <= ref; i++){
+                    result = prompt('Entrez un chiffre')*1;
+                    if(result < nbRandom){
+                        counter--;
+                        alert('C\'est plus, il vous reste ' + counter + ' essais');                   
+                    } else if(result > nbRandom){
+                        counter--;
+                        alert('C\'est moins, il vous reste ' + counter + ' essais');
+                    } else if(result = nbRandom){
+                        alert('Bravo, vous avez gagné');
+                        break;
+                    }
+                }
+                if(counter <= 0){
+                    alert('Vous avez perdu, le nombre à deviner étais ' + nbRandom);
+                }
+            }
+
+            // justPriceV2();
+
+            function justPriceV3(){
+                let nbRandom = Math.floor(Math.random() * 1000);
+                let result;
+
+                    function difficultChoice(){
+                        let delay;
+                    difficult = prompt('Selectionnez votre niveau de difficulté - Facile = 1 - Normal = 2 - Difficile = 3');
+                    switch(difficult){
+                        case '1' :
+                            delay = 120000;
+                            return delay;
+                            break;
+
+                        case '2' :
+                            delay = 60000;
+                            return delay;
+                            break;
+
+                        case '3' :
+                            delay = 30000;
+                            return delay;
+                            break;
+
+                        default : 
+                        alert('Entrer une valeur valide !');
+                        difficultChoice();
+                    }
+                }
+
+                function game(milliseconds){
+                    let start = new Date().getTime();
+                    let end = 0;
+                    while ((end - start) < milliseconds){
+                        end = new Date().getTime();                     
+                    result = prompt('Entrez un chiffre')*1;       
+                        if(result < nbRandom){
+                            alert('C\'est plus');          
+                        } else if(result > nbRandom){
+                            alert('C\'est moins');
+                        } else if(result = nbRandom){
+                            alert('Bravo, vous avez gagné');
+                            playAgain(); 
+                            return;
+                        }
+                    }
+                    loose();
+                }
+
+                function loose(){
+                    alert('Vous avez perdu, le nombre à deviner étais ' + nbRandom);
+                    playAgain();
+                }
+
+                function endGame(){
+                    alert('Merci d\'avoir joué !');
+                    return;
+                }
+                
+
+                function playAgain(){
+                    let replay = prompt('Rejouer ? (O/N)');
+                    switch(replay){
+                        case 'O' : 
+                            justPriceV3();
+                            break;
+
+                        case 'o' :
+                            justPriceV3();
+                            break;
+
+                        case 'N' :
+                            endGame();
+                            break;
+
+                        case 'n' :
+                            endGame();
+                            break;
+
+                        default : 
+                            playAgain();
+                            break;
+                    }
+                }
+                
+                let timer = difficultChoice();
+                game(timer);
+                return;
+            }
+                // justPriceV3();
+                
+                
+
+        </script>
+    </body>
+</html>
